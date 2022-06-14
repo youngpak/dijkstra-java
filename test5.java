@@ -1,7 +1,7 @@
-import java.util.Arrays;
+package test5;
 public class test5{
-	//public static void main(String[] args) {
-		ijkstra d = new ijkstra(20);
+	public static void main(String[] args) {
+		Dijkstra d = new Dijkstra(20);
 		
 		//인접한 두 꼭지점 사이의 가중치 주입
 		d.input("a","b",2);
@@ -32,17 +32,18 @@ public class test5{
 		d.input("r","s",5);
 		
 		//시작점 a에서부터의 최단거리 및 최단경로 출력
-		d.Algorithm("i");
+		d.algorithm("i");
 	}
 
 }
-class ijkstra {
+class Dijkstra {
 	private int n; //꼭지점 수를 변수로 선언
 	private int[][] weight; //2차원 배열 weight에 각 꼭지점의 가중치를 저장
 	private String[] saveRoute;
 	private String[] vertex = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t"};
 	
-	public ijkstra(int n) {
+	
+	public Dijkstra(int n) {
 		super();
 		this.n = n; //생성자를 통해 꼭지점 수를 주입하고,
 		weight = new int[n][n]; //가중치를 저장할 배열 weight의 크기 지정.
@@ -70,7 +71,7 @@ class ijkstra {
 		weight[x2][x1] = w;
 	}
 	
-	public void Algorithm(String a) {
+	public void algorithm(String a) {
 		boolean[] visited = new boolean[n]; //각 꼭지점의 방문 여부
 		int distance[] = new int[n]; //시작 꼭지점에서부터 각 꼭지점까지의 거리
 		
@@ -123,22 +124,23 @@ class ijkstra {
 		}
 		//시작 꼭지점부터 특정 꼭지점까지의 거리 출력
 		for(int i=0; i<n; i++) {
-			Arrays.sort(distance);
 			System.out.println("시작 꼭지점 "+a+"부터 꼭지점 "+vertex[i]+"까지의 거리 :"+distance[i]);
-					
 		}
 		
-		
-		//System.out.println("==================================");
+		System.out.println("==================================");
 		
 		//시작 꼭지점부터 특정 꼭지점까지의 경로 출력
-		/*
-		 * for(int i=0; i<n; i++) { String route = "";
-		 * System.out.println("시작 꼭지점 "+a+"부터 꼭지점 "+vertex[i]+"까지의 경로"); int index = i;
-		 * while(true) { if(saveRoute[index] == vertex[index]) break; //시작 꼭지점일 경우 break
-		 * route += " " + saveRoute[index]; index = stringToInt(saveRoute[index]);
-		 * //결정적인 역할을 한 꼭지점을 int형으로 바꿔서 index에 저장 } StringBuilder sb = new
-		 * StringBuilder(route); System.out.println(sb.reverse() + vertex[i]); }
-		 */
+		for(int i=0; i<n; i++) {
+			String route = "";
+			System.out.println("시작 꼭지점 "+a+"부터 꼭지점 "+vertex[i]+"까지의 경로");
+			int index = i;
+			while(true) {
+				if(saveRoute[index] == vertex[index]) break; //시작 꼭지점일 경우 break
+				route += " " + saveRoute[index];
+				index = stringToInt(saveRoute[index]); //결정적인 역할을 한 꼭지점을 int형으로 바꿔서 index에 저장 
+			}
+			StringBuilder sb = new StringBuilder(route);
+			System.out.println(sb.reverse() + vertex[i]);
+		}
 	}
 }
