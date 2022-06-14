@@ -14,10 +14,10 @@ public class test5{
 		d.input("e","f",2);
 		d.input("e","j",1);
 		d.input("f","g",2);
-		d.input("g","o",3);
+		d.input("g","o",4);
 		d.input("g","h",2);
 		d.input("h","i",1);
-		d.input("i","t",3);
+		d.input("i","t",4);
 		d.input("i","r",10);
 		d.input("t","r",11);
 		d.input("j","k",4);
